@@ -11,6 +11,7 @@ type
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -30,6 +31,11 @@ uses UFimprimirHoja1;
 procedure TFSelectImprimirEvento.SpeedButton1Click(Sender: TObject);
 begin
   RVFImprimirHoja1.Imprimir(pk_evento, pk_condominio);
+end;
+
+procedure TFSelectImprimirEvento.SpeedButton2Click(Sender: TObject);
+begin
+  RVFImprimirHoja1.ImprimirHoja2(pk_evento, pk_condominio);
 end;
 
 end.

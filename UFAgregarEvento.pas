@@ -10,40 +10,43 @@ umodconexion,
 
 type
   TFAgregarEvento = class(TForm)
-    DateTimePicker1: TDateTimePicker;
+    ScrollBox1: TScrollBox;
     Label1: TLabel;
-    ehoraini: TMaskEdit;
-    ehorafin: TMaskEdit;
     Label2: TLabel;
     Label3: TLabel;
     SpeedButton1: TSpeedButton;
-    EPropietarioPropiedad: TEdit;
     Label4: TLabel;
     Label5: TLabel;
+    Label6: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Shape1: TShape;
+    lnumero: TLabel;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    DateTimePicker1: TDateTimePicker;
+    ehoraini: TMaskEdit;
+    ehorafin: TMaskEdit;
+    EPropietarioPropiedad: TEdit;
     Epersonapaga: TEdit;
     btnnuevo: TBitBtn;
     btnbusarpersona: TBitBtn;
     CBDisponible: TComboBox;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
-    QSQL: TZQuery;
-    QBuscar: TZQuery;
-    Shape1: TShape;
-    lnumero: TLabel;
     CBChurrasquera: TCheckBox;
     CBSalon: TCheckBox;
     EMotivoEvento: TEdit;
-    Label9: TLabel;
     EAmenizado: TEdit;
-    Label10: TLabel;
     ECeulular: TEdit;
-    Label11: TLabel;
     ENumeroInvitados: TEdit;
-    Label12: TLabel;
     EColor: TEdit;
+    QSQL: TZQuery;
+    QBuscar: TZQuery;
+    Label13: TLabel;
+    CBPropietarioInquilino: TComboBox;
     procedure SpeedButton1Click(Sender: TObject);
     procedure btnnuevoClick(Sender: TObject);
     procedure btnbusarpersonaClick(Sender: TObject);
@@ -121,6 +124,8 @@ begin
         FieldByName('NumeroInvitados').value := ENumeroInvitados.Text;
         FieldByName('CelularContacto').value := ECeulular.Text;
         FieldByName('Amenizado').value := EAmenizado.Text;
+        FieldByName('PropietarioInquilino').value := CBPropietarioInquilino.Text;
+
 
         Post;
 
@@ -163,6 +168,7 @@ begin
         FieldByName('NumeroInvitados').value := ENumeroInvitados.Text;
         FieldByName('CelularContacto').value := ECeulular.Text;
         FieldByName('Amenizado').value := EAmenizado.Text;
+        FieldByName('PropietarioInquilino').value := CBPropietarioInquilino.Text;
 
         Post;
 
@@ -213,6 +219,7 @@ begin
     ' 	evento.NumeroInvitados, '+
     ' 	evento.CelularContacto, '+
     ' 	evento.Amenizado, '+
+    ' 	evento.PropietarioInquilino, '+
     ' 	nombredueno(contrato.pk_contrato) as propietario, '+
     ' 	propiedad.codigo, '+
     ' 	(SELECT nombre from persona where pk_persona = evento.fk_persona) AS NombrePersona '+
@@ -240,8 +247,8 @@ begin
     ENumeroInvitados.Text := FieldByName('NumeroInvitados').AsString;
     ECeulular.Text := FieldByName('CelularContacto').AsString;
     EAmenizado.Text := FieldByName('Amenizado').AsString;
-
     CBDisponible.Text:=FieldByName('disponible').AsString;
+    CBPropietarioInquilino.Text := FieldByName('PropietarioInquilino').AsString;
 
 
   end;
@@ -316,6 +323,7 @@ begin
     ENumeroInvitados.Text := '';
     ECeulular.Text := '';
     EAmenizado.Text := '';
+    CBPropietarioInquilino.Text:='';
 
 end;
 

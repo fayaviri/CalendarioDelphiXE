@@ -25,6 +25,7 @@ type
 
     procedure Cargar(pk_evento,pk_condominio:string);
     procedure Imprimir(pk_evento,pk_condominio:string);
+    procedure ImprimirHoja2(pk_evento,pk_condominio:string);
   end;
 
 var
@@ -56,8 +57,6 @@ begin
 ' evento.CelularContacto,  '+
 ' evento.Amenizado,  '+
 ' (select nombre from condominio where pk_condominio=1) as Condominio  '+
-
-    ' (select nombre from condominio where pk_condominio=1) as Condominio '+
     ' FROM  '+
     ' evento inner join persona on evento.fk_persona=persona.pk_persona '+
     ' where '+
@@ -82,8 +81,18 @@ begin
     FImprimirHoja1.ProjectFile:=ExtractFilePath(ExpandFileName('vizat.exe'))+'ImprimirHoja1.rav';
     Cargar(pk_evento, pk_condominio);
     FImprimirHoja1.Open;
+    FImprimirHoja1.ExecuteReport('Report1');
+    FImprimirHoja1.Close;
+end;
+
+procedure TRVFImprimirHoja1.ImprimirHoja2(pk_evento, pk_condominio: string);
+begin
+    FImprimirHoja1.ProjectFile:=ExtractFilePath(ExpandFileName('vizat.exe'))+'ImprimirHoja1.rav';
+    Cargar(pk_evento, pk_condominio);
+    FImprimirHoja1.Open;
     FImprimirHoja1.ExecuteReport('Report2');
     FImprimirHoja1.Close;
+
 end;
 
 end.

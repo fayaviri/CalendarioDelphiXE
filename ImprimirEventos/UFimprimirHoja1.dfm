@@ -2,8 +2,8 @@ object RVFImprimirHoja1: TRVFImprimirHoja1
   Left = 0
   Top = 0
   Caption = 'Imprimir Hoja 1'
-  ClientHeight = 448
-  ClientWidth = 469
+  ClientHeight = 331
+  ClientWidth = 440
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
