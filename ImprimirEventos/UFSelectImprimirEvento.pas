@@ -10,8 +10,10 @@ type
   TFSelectImprimirEvento = class(TForm)
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -36,6 +38,11 @@ end;
 procedure TFSelectImprimirEvento.SpeedButton2Click(Sender: TObject);
 begin
   RVFImprimirHoja1.ImprimirHoja2(pk_evento, pk_condominio);
+end;
+
+procedure TFSelectImprimirEvento.SpeedButton3Click(Sender: TObject);
+begin
+  RVFImprimirHoja1.ImprimirHoja3(pk_evento, pk_condominio);
 end;
 
 end.

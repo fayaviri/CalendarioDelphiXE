@@ -26,6 +26,7 @@ type
     procedure Cargar(pk_evento,pk_condominio:string);
     procedure Imprimir(pk_evento,pk_condominio:string);
     procedure ImprimirHoja2(pk_evento,pk_condominio:string);
+    procedure ImprimirHoja3(pk_evento,pk_condominio:string);
   end;
 
 var
@@ -41,6 +42,7 @@ begin
   begin
     SQL.Text:=''+
     ' SELECT  '+
+' evento.pk_evento,  '+
 ' evento.fecha,  '+
 ' persona.nombre,  '+
 ' persona.ci,  '+
@@ -93,6 +95,15 @@ begin
     FImprimirHoja1.ExecuteReport('Report2');
     FImprimirHoja1.Close;
 
+end;
+
+procedure TRVFImprimirHoja1.ImprimirHoja3(pk_evento, pk_condominio: string);
+begin
+    FImprimirHoja1.ProjectFile:=ExtractFilePath(ExpandFileName('vizat.exe'))+'ImprimirHoja1.rav';
+    Cargar(pk_evento, pk_condominio);
+    FImprimirHoja1.Open;
+    FImprimirHoja1.ExecuteReport('Report3');
+    FImprimirHoja1.Close;
 end;
 
 end.

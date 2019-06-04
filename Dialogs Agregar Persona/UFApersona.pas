@@ -40,6 +40,13 @@ type
     QPropietariorelacion: TWideStringField;
     QPropietarioactivo: TWideStringField;
     QPropietariofk_persona: TIntegerField;
+    Label9: TLabel;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    Label15: TLabel;
     procedure FormShow(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);

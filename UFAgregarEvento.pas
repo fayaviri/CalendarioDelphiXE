@@ -42,21 +42,24 @@ type
     EAmenizado: TEdit;
     ECeulular: TEdit;
     ENumeroInvitados: TEdit;
-    EColor: TEdit;
     QSQL: TZQuery;
     QBuscar: TZQuery;
     Label13: TLabel;
     CBPropietarioInquilino: TComboBox;
+    EColor: TComboBox;
+    SpeedButton2: TSpeedButton;
     procedure SpeedButton1Click(Sender: TObject);
     procedure btnnuevoClick(Sender: TObject);
     procedure btnbusarpersonaClick(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
 
   private
     { Private declarations }
     function validar:boolean;
     procedure ClicAgregarPersonas;
+    procedure ClicEditarPersonas;
     procedure ClicBuscarPersona;
 
     procedure Cargar;
@@ -281,6 +284,22 @@ begin
 end;
 
 
+procedure TFAgregarEvento.ClicEditarPersonas;
+begin
+ if pk_pagador<>'' then
+ begin
+  FApersona.op:='Editar';
+  FApersona.listarpropietario(pk_pagador);
+  FApersona.pk_propietario:=pk_pagador;
+  FApersona.ShowModal;
+  if FApersona.pk_propietario<>'' then
+  begin
+    pk_pagador:=FApersona.pk_propietario;
+    Epersonapaga.Text:=FApersona.nombre;
+  end;
+ end;
+end;
+
 procedure TFAgregarEvento.FormShow(Sender: TObject);
 
 begin
@@ -422,6 +441,11 @@ begin
       pk_contrato := FBPropiedadPropietarioEvento.pk_contrato;
     end;
 
+end;
+
+procedure TFAgregarEvento.SpeedButton2Click(Sender: TObject);
+begin
+ClicEditarPersonas;
 end;
 
 function TFAgregarEvento.validar: boolean;

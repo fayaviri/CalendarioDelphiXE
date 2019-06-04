@@ -13,7 +13,8 @@ uses
   UCCalendario in 'UCCalendario.pas',
   URegistros in 'URegistros.pas',
   UFimprimirHoja1 in 'ImprimirEventos\UFimprimirHoja1.pas' {RVFImprimirHoja1},
-  UFSelectImprimirEvento in 'ImprimirEventos\UFSelectImprimirEvento.pas' {FSelectImprimirEvento};
+  UFSelectImprimirEvento in 'ImprimirEventos\UFSelectImprimirEvento.pas' {FSelectImprimirEvento},
+  UFConfiguracionEvento in 'Configuracion\UFConfiguracionEvento.pas' {FConfiguracionEvento};
 
 {$R *.res}
 
@@ -29,5 +30,6 @@ begin
   Application.CreateForm(TFBPersona, FBPersona);
   Application.CreateForm(TRVFImprimirHoja1, RVFImprimirHoja1);
   Application.CreateForm(TFSelectImprimirEvento, FSelectImprimirEvento);
+  Application.CreateForm(TFConfiguracionEvento, FConfiguracionEvento);
   Application.Run;
 end.

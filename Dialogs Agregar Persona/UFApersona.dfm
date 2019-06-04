@@ -3,9 +3,9 @@ object FApersona: TFApersona
   Top = 0
   BorderStyle = bsToolWindow
   Caption = 'Agregar Persona'
-  ClientHeight = 475
-  ClientWidth = 457
-  Color = 6994790
+  ClientHeight = 432
+  ClientWidth = 437
+  Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -15
@@ -17,97 +17,109 @@ object FApersona: TFApersona
   PixelsPerInch = 96
   TextHeight = 18
   object Label1: TLabel
-    Left = 40
+    Left = 16
     Top = 80
     Width = 51
     Height = 18
     Caption = 'Nombre'
+    Color = clBtnFace
     FocusControl = DBEdit1
     Font.Charset = ANSI_CHARSET
-    Font.Color = clWhite
+    Font.Color = 4227072
     Font.Height = -15
     Font.Name = 'Calibri'
     Font.Style = [fsBold]
+    ParentColor = False
     ParentFont = False
   end
   object Label2: TLabel
-    Left = 40
+    Left = 16
     Top = 112
     Width = 12
     Height = 18
     Caption = 'CI'
     FocusControl = DBEdit2
     Font.Charset = ANSI_CHARSET
-    Font.Color = clWhite
+    Font.Color = 4227072
     Font.Height = -15
     Font.Name = 'Calibri'
     Font.Style = []
     ParentFont = False
   end
   object Label3: TLabel
-    Left = 40
+    Left = 16
     Top = 144
     Width = 30
     Height = 18
     Caption = 'Sexo'
+    Color = clBtnFace
     Font.Charset = ANSI_CHARSET
-    Font.Color = clWhite
+    Font.Color = 4227072
     Font.Height = -15
     Font.Name = 'Calibri'
     Font.Style = [fsBold]
+    ParentColor = False
     ParentFont = False
   end
   object Label4: TLabel
-    Left = 40
+    Left = 16
     Top = 176
     Width = 66
     Height = 18
     Caption = 'Fecha Nac.'
+    Color = clBtnFace
     Font.Charset = ANSI_CHARSET
-    Font.Color = clWhite
+    Font.Color = 4227072
     Font.Height = -15
     Font.Name = 'Calibri'
     Font.Style = [fsBold]
+    ParentColor = False
     ParentFont = False
   end
   object Label5: TLabel
-    Left = 40
+    Left = 16
     Top = 208
     Width = 71
     Height = 18
     Caption = 'Estado Civil'
+    Color = clBtnFace
     Font.Charset = ANSI_CHARSET
-    Font.Color = clWhite
+    Font.Color = 4227072
     Font.Height = -15
     Font.Name = 'Calibri'
     Font.Style = [fsBold]
+    ParentColor = False
     ParentFont = False
   end
   object Label6: TLabel
-    Left = 40
+    Left = 16
     Top = 240
     Width = 58
     Height = 18
     Caption = 'Direccion'
+    Color = clBtnFace
     FocusControl = DBEdit6
     Font.Charset = ANSI_CHARSET
-    Font.Color = clWhite
+    Font.Color = 4227072
     Font.Height = -15
     Font.Name = 'Calibri'
     Font.Style = [fsBold]
+    ParentColor = False
     ParentFont = False
   end
   object Label7: TLabel
-    Left = 40
+    Left = 16
     Top = 272
     Width = 53
     Height = 18
     Caption = 'Relacion'
+    Color = clBtnFace
     Font.Charset = ANSI_CHARSET
-    Font.Color = clWhite
+    Font.Color = 4227072
     Font.Height = -15
     Font.Name = 'Calibri'
     Font.Style = [fsBold]
+    ParentColor = False
     ParentFont = False
   end
   object Label8: TLabel
@@ -118,7 +130,7 @@ object FApersona: TFApersona
     Caption = 'AGREGAR PERSONA'
     FocusControl = DBEdit1
     Font.Charset = ANSI_CHARSET
-    Font.Color = clWhite
+    Font.Color = 4227072
     Font.Height = -16
     Font.Name = 'Calibri'
     Font.Style = [fsBold, fsUnderline]
@@ -307,6 +319,100 @@ object FApersona: TFApersona
       7D590D4E35AB7442B713802B07880846C2E51AEFF91B1D1FD1C113CB9723C92B
       F2DBF33AE1F3F844001269913D5E6F13FE23FFC3ED15E0E7D6AE02FCAFDBBF00
       A5A4F8ECA177BB160000000049454E44AE426082}
+  end
+  object Label9: TLabel
+    Left = 96
+    Top = 80
+    Width = 17
+    Height = 18
+    Caption = '(*)'
+    FocusControl = DBEdit1
+    Font.Charset = ANSI_CHARSET
+    Font.Color = 4227327
+    Font.Height = -15
+    Font.Name = 'Calibri'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label10: TLabel
+    Left = 96
+    Top = 112
+    Width = 17
+    Height = 18
+    Caption = '(*)'
+    FocusControl = DBEdit2
+    Font.Charset = ANSI_CHARSET
+    Font.Color = 4227327
+    Font.Height = -15
+    Font.Name = 'Calibri'
+    Font.Style = []
+    ParentFont = False
+  end
+  object Label11: TLabel
+    Left = 96
+    Top = 144
+    Width = 17
+    Height = 18
+    Caption = '(*)'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = 4227327
+    Font.Height = -15
+    Font.Name = 'Calibri'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label12: TLabel
+    Left = 96
+    Top = 176
+    Width = 17
+    Height = 18
+    Caption = '(*)'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = 4227327
+    Font.Height = -15
+    Font.Name = 'Calibri'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label13: TLabel
+    Left = 96
+    Top = 208
+    Width = 17
+    Height = 18
+    Caption = '(*)'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = 4227327
+    Font.Height = -15
+    Font.Name = 'Calibri'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label14: TLabel
+    Left = 96
+    Top = 240
+    Width = 17
+    Height = 18
+    Caption = '(*)'
+    FocusControl = DBEdit6
+    Font.Charset = ANSI_CHARSET
+    Font.Color = 4227327
+    Font.Height = -15
+    Font.Name = 'Calibri'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label15: TLabel
+    Left = 96
+    Top = 272
+    Width = 17
+    Height = 18
+    Caption = '(*)'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = 4227327
+    Font.Height = -15
+    Font.Name = 'Calibri'
+    Font.Style = [fsBold]
+    ParentFont = False
   end
   object BitBtn1: TBitBtn
     Left = 129

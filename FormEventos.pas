@@ -21,19 +21,22 @@ end;
 
 
   TFEventos = class(TForm)
-    Button3: TButton;
     Label1: TLabel;
     Cmes: TComboBox;
     cano: TComboBox;
     QSQL: TZQuery;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
     procedure FormCreate(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { Private declarations }
   public
     { Public declarations }
     GenenrarCalendario : CLCalendario;
+    pk_condominio,  pk_usuario:string;
     procedure Iniciar;
 
   end;
@@ -43,7 +46,7 @@ var
 
 implementation
 
-uses UFAgregarEvento;
+uses UFAgregarEvento, UFConfiguracionEvento;
 
 {$R *.dfm}
 
@@ -65,11 +68,6 @@ begin
   for i := 1 to 12 do
     if MESES[i]=mes then
        Result:=i;
-end;
-
-procedure TFEventos.Button3Click(Sender: TObject);
-begin
-  Iniciar;
 end;
 
 procedure TFEventos.FormCreate(Sender: TObject);
@@ -143,6 +141,16 @@ begin
   end;
 
   GenenrarCalendario.Construir;
+end;
+
+procedure TFEventos.SpeedButton1Click(Sender: TObject);
+begin
+  FConfiguracionEvento.ShowModal;
+end;
+
+procedure TFEventos.SpeedButton2Click(Sender: TObject);
+begin
+  Iniciar;
 end;
 
 { CCalendario }
