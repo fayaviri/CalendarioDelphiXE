@@ -65,11 +65,12 @@ type
   public
     { Public declarations }
     pk_condominio,
+
     pk_contrato,
     pk_usuario:string;
 
     pk_manzano,
-    manzano:string;
+    manzano,
     pk_propiedad,
     propiedad,
     propietario:string;
@@ -92,232 +93,11 @@ procedure TFBPropiedadPropietarioEvento.ClicInDbGrid;
 begin
 
       pk_contrato:=DBBuscar.Fields[0].AsString;
+      pk_propiedad:=DSBuscar.DataSet.FieldByName('pk_propiedad').AsString;
       propietario:=DSBuscar.DataSet.FieldByName('propietario').AsString;
       propiedad:=DSBuscar.DataSet.FieldByName('codigo').AsString;
       close;
-(*
-  if op='cobrar deuda' then
-  begin
-    try
-      FCobrarDeuda.op:='cobrar deuda';
-      FCobrarDeuda.pk_contrato:=DBBuscar.Fields[0].AsString;
-      FCobrarDeuda.propietario:=DSBuscar.DataSet.FieldByName('propietario').AsString;
-      FCobrarDeuda.propiedad:=DSBuscar.DataSet.FieldByName('codigo').AsString;
-      FCobrarDeuda.pk_usuario:=pk_usuario;
-      FCobrarDeuda.pk_condominio:=pk_condominio;
-      if (FCobrarDeuda.pk_contrato<>'')and(FCobrarDeuda.pk_condominio<>'') then
-      begin
-      FCobrarDeuda.Height:=FHeiht;
-      FCobrarDeuda.Position:=poScreenCenter;
-      FCobrarDeuda.ShowModal;
-      end;
-    except
 
-    end;
-  end;
-
-  if op='cobrar deuda sistema' then
-  begin
-    try
-      FCobrarDeuda.op:='cobrar deuda sistema' ;
-      FCobrarDeuda.pk_contrato:=DBBuscar.Fields[0].AsString;
-      FCobrarDeuda.propietario:=DSBuscar.DataSet.FieldByName('propietario').AsString;
-      FCobrarDeuda.propiedad:=DSBuscar.DataSet.FieldByName('codigo').AsString;
-      FCobrarDeuda.pk_usuario:=pk_usuario;
-      FCobrarDeuda.pk_condominio:=pk_condominio;
-      if (FCobrarDeuda.pk_contrato<>'')and(FCobrarDeuda.pk_condominio<>'') then
-      begin
-      FCobrarDeuda.Height:=FHeiht;
-      FCobrarDeuda.Position:=poScreenCenter;
-      FCobrarDeuda.ShowModal;
-      end;
-    except
-
-    end;
-  end;
-
-
-  if op='avanzadas error' then
-  begin
-    try
-      FOpcionesAvanzadas.op:='Opciones Avanzadas' ;
-      FOpcionesAvanzadas.pk_contrato:=DBBuscar.Fields[0].AsString;
-      FOpcionesAvanzadas.propietario:=DSBuscar.DataSet.FieldByName('propietario').AsString;
-      FOpcionesAvanzadas.propiedad:=DSBuscar.DataSet.FieldByName('codigo').AsString;
-      FOpcionesAvanzadas.pk_usuario:=pk_usuario;
-      FOpcionesAvanzadas.pk_condominio:=pk_condominio;
-      if (FOpcionesAvanzadas.pk_contrato<>'')and(FOpcionesAvanzadas.pk_condominio<>'') then
-      begin
-      FOpcionesAvanzadas.Height:=FHeiht;
-      FOpcionesAvanzadas.Position:=poScreenCenter;
-      FOpcionesAvanzadas.ShowModal;
-      end;
-    except
-
-    end;
-  end;
-
-  if op='agregar deuda' then
-  begin
-    try
-       if DSBuscar.DataSet.FieldByName('pk_contrato').AsString<>'' then
-       begin
-        FAgregarDeuda.Height:=Height;
-        FAgregarDeuda.Position:=poScreenCenter;
-        FAgregarDeuda.pk_contrato:=DBBuscar.Fields[0].AsString;
-        FAgregarDeuda.propietario:=DBBuscar.Fields[1].AsString;
-        FAgregarDeuda.pk_usuario:=pk_usuario;
-        FAgregarDeuda.pk_condominio:=pk_condominio;
-        FAgregarDeuda.Lpropiedad.Caption:=DBBuscar.Fields[1].AsString;
-        FAgregarDeuda.Lpropietario.Caption:=DBBuscar.Fields[2].AsString;
-        FAgregarDeuda.ShowModal;
-       end;
-    except
-
-    end;
-  end;
-
-  if op='editar deuda' then
-  begin
-    try
-      FEditarDeuda.pk_contrato:=DBBuscar.Fields[0].AsString;
-      FEditarDeuda.propietario:=DSBuscar.DataSet.FieldByName('propietario').AsString;
-      FEditarDeuda.propiedad:=DSBuscar.DataSet.FieldByName('codigo').AsString;
-      FEditarDeuda.pk_usuario:=pk_usuario;
-      FEditarDeuda.pk_condominio:=pk_condominio;
-      if (FEditarDeuda.pk_contrato<>'')and(FEditarDeuda.pk_condominio<>'') then
-      begin
-      FEditarDeuda.Height:=FHeiht;
-      FEditarDeuda.Position:=poScreenCenter;
-      FEditarDeuda.ShowModal;
-      end;
-    except
-
-    end;
-  end;
-
-  if op='eliminar deuda' then
-  begin
-    try
-      FEliminarDeuda.pk_contrato:=DBBuscar.Fields[0].AsString;
-      FEliminarDeuda.propietario:=DSBuscar.DataSet.FieldByName('propietario').AsString;
-      FEliminarDeuda.propiedad:=DSBuscar.DataSet.FieldByName('codigo').AsString;
-      FEliminarDeuda.pk_usuario:=pk_usuario;
-      FEliminarDeuda.pk_condominio:=pk_condominio;
-      if (FEliminarDeuda.pk_contrato<>'')and(FEliminarDeuda.pk_condominio<>'') then
-      begin
-      FEliminarDeuda.Height:=FHeiht;
-      FEliminarDeuda.Position:=poScreenCenter;
-      FEliminarDeuda.ShowModal;
-      end;
-    except
-
-    end;
-  end;
-
-  if op='administrar cuota' then
-  begin
-    try
-      FEditarCuota.pk_contrato:=DBBuscar.Fields[0].AsString;
-      FEditarCuota.propietario:=DSBuscar.DataSet.FieldByName('propietario').AsString;
-      FEditarCuota.propiedad:=DSBuscar.DataSet.FieldByName('codigo').AsString;
-      FEditarCuota.pk_usuario:=pk_usuario;
-      FEditarCuota.pk_condominio:=pk_condominio;
-      if (FEditarCuota.pk_contrato<>'')and(FEditarCuota.pk_condominio<>'') then
-      begin
-      FEditarCuota.Height:=FHeiht;
-      FEditarCuota.Position:=poScreenCenter;
-      FEditarCuota.ShowModal;
-      end;
-    except
-    end;
-  end;
-
-  if op='eliminar cuota' then
-  begin
-    try
-      FEliminarCuota.pk_contrato:=DBBuscar.Fields[0].AsString;
-      FEliminarCuota.propietario:=DSBuscar.DataSet.FieldByName('propietario').AsString;
-      FEliminarCuota.propiedad:=DSBuscar.DataSet.FieldByName('codigo').AsString;
-      FEliminarCuota.pk_usuario:=pk_usuario;
-      FEliminarCuota.pk_condominio:=pk_condominio;
-      if (FEliminarCuota.pk_contrato<>'')and(FEliminarCuota.pk_condominio<>'') then
-      begin
-      FEliminarCuota.Height:=FHeiht;
-      FEliminarCuota.Position:=poScreenCenter;
-      FEliminarCuota.ShowModal;
-      end;
-    except
-    end;
-  end;
-
-  if op='reimprimir pago' then
-  begin
-    try
-      FSeleccionarReciboPago.pk_contrato:=DBBuscar.Fields[0].AsString;
-      FSeleccionarReciboPago.propietario:=DSBuscar.DataSet.FieldByName('propietario').AsString;
-      FSeleccionarReciboPago.propiedad:=DSBuscar.DataSet.FieldByName('codigo').AsString;
-      FSeleccionarReciboPago.pk_usuario:=pk_usuario;
-      FSeleccionarReciboPago.pk_condominio:=pk_condominio;
-      if (FSeleccionarReciboPago.pk_contrato<>'')and(FSeleccionarReciboPago.pk_condominio<>'') then
-      begin
-      FSeleccionarReciboPago.Height:=FHeiht;
-      FSeleccionarReciboPago.Position:=poScreenCenter;
-      FSeleccionarReciboPago.ShowModal;
-      end;
-    except
-    end;
-  end;
-
-  if op='modificar contrato' then
-  begin
-    try
-      FpersonaPropiedad.Height:=FHeiht;
-      FpersonaPropiedad.Position:=poScreenCenter;
-      FpersonaPropiedad.pk_usuario:=pk_usuario;
-      FpersonaPropiedad.pk_condominio:=pk_condominio;
-      FpersonaPropiedad.pk_contrato:=DBBuscar.Fields[0].AsString;
-      FpersonaPropiedad.ShowModal;
-    except
-    end;
-  end;
-
-  if op='imprimir deudas' then
-  begin
-    try
-      FInformeDeuPropie.pk_contrato:=DBBuscar.Fields[0].AsString;
-      FInformeDeuPropie.propietario:=DSBuscar.DataSet.FieldByName('propietario').AsString;
-      FInformeDeuPropie.propiedad:=DSBuscar.DataSet.FieldByName('codigo').AsString;
-      FInformeDeuPropie.pk_usuario:=pk_usuario;
-      FInformeDeuPropie.pk_condominio:=pk_condominio;
-      if (FInformeDeuPropie.pk_contrato<>'')and(FInformeDeuPropie.pk_condominio<>'') then
-      begin
-      FInformeDeuPropie.Height:=FHeiht-20;
-      FInformeDeuPropie.Position:=poScreenCenter;
-      FInformeDeuPropie.ShowModal;
-      end;
-    except
-    end;
-  end;
-
-  if op='imprimir historial' then
-  begin
-    try
-      FInformeHistorialPagos.pk_contrato:=DBBuscar.Fields[0].AsString;
-      FInformeHistorialPagos.propietario:=DSBuscar.DataSet.FieldByName('propietario').AsString;
-      FInformeHistorialPagos.propiedad:=DSBuscar.DataSet.FieldByName('codigo').AsString;
-      FInformeHistorialPagos.pk_usuario:=pk_usuario;
-      FInformeHistorialPagos.pk_condominio:=pk_condominio;
-      if (FInformeHistorialPagos.pk_contrato<>'')and(FInformeHistorialPagos.pk_condominio<>'') then
-      begin
-      FInformeHistorialPagos.Height:=FHeiht-20;
-      FInformeHistorialPagos.Position:=poScreenCenter;
-      FInformeHistorialPagos.ShowModal;
-      end;
-    except
-    end;
-  end;
-  *)
 end;
 
 procedure TFBPropiedadPropietarioEvento.ClicManzano;
@@ -395,6 +175,7 @@ end;
 
 procedure TFBPropiedadPropietarioEvento.DBlsitamanzanosCellClick(Column: TColumn);
 begin
+
   pk_manzano:=DBlsitamanzanos.DataSource.DataSet.FieldByName('pk_manzano').AsString;
   manzano:=DBlsitamanzanos.DataSource.DataSet.FieldByName('codigo').AsString;
   //btnmanzano.Caption:=DBlsitamanzanos.DataSource.DataSet.FieldByName('codigo').AsString;

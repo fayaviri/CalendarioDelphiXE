@@ -9,7 +9,7 @@ object DMConexion: TDMConexion
       'controls_cp=CP_UTF16')
     HostName = 'localhost'
     Port = 3306
-    Database = 'sysconsu_bdmacororo'
+    Database = 'sysconsu_sevillajardines'
     User = 'root'
     Password = 'root'
     Protocol = 'mysql'

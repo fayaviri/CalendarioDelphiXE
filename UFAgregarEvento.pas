@@ -48,6 +48,8 @@ type
     CBPropietarioInquilino: TComboBox;
     EColor: TComboBox;
     SpeedButton2: TSpeedButton;
+    Label14: TLabel;
+    Edireccion: TEdit;
     procedure SpeedButton1Click(Sender: TObject);
     procedure btnnuevoClick(Sender: TObject);
     procedure btnbusarpersonaClick(Sender: TObject);
@@ -72,10 +74,13 @@ type
     function Obtener(valor:boolean):string;
     function ObtenerBol(valor:string):Boolean;
 
+    function ValidarColor():boolean;
+    function ValidarColorEditar():boolean;
+
   public
     { Public declarations }
     Dato,codigo,fecha,numero:string;
-    pk_pagador,pk_contrato:string;
+    pk_pagador,pk_contrato,pk_propiedad:string;
 
   end;
 
@@ -100,88 +105,154 @@ begin
   begin
     if codigo='' then
     begin
+   
+      
+        with QSQL do
+        begin
+          SQL.Text:=''+
+          ' update propiedad '+
+          ' set nombre="'+Edireccion.Text+'" '+
+          ' where '+
+          ' pk_propiedad='+pk_propiedad+'; ';
+          ExecSQL;
+          
+          SQL.Text:='select * from evento where pk_evento=0;';
+          Open;
+          Active:=True;
 
-      with QSQL do
-      begin
-        SQL.Text:='select * from evento where pk_evento=0;';
-        Open;
-        Active:=True;
+          Insert;
+          FieldByName('fecha').value := DateTimePicker1.DateTime ;
+          FieldByName('numero').value :=  numero;
+          FieldByName('anio').value :=  ano;
+          FieldByName('mes').value := mes;
+          FieldByName('dia').value := dia;
+          FieldByName('horainicio').value := ehoraini.Text;
+          FieldByName('horafin').value := ehorafin.Text;
+          FieldByName('fk_contrato').value := pk_contrato;
+          //FieldByName('fk_propietario').value := pk_propietario;
+          FieldByName('fk_persona').value := pk_pagador;
+          FieldByName('disponible').value := CBDisponible.Text;
 
-        Insert;
-        FieldByName('fecha').value := DateTimePicker1.DateTime ;
-        FieldByName('numero').value :=  numero;
-        FieldByName('anio').value :=  ano;
-        FieldByName('mes').value := mes;
-        FieldByName('dia').value := dia;
-        FieldByName('horainicio').value := ehoraini.Text;
-        FieldByName('horafin').value := ehorafin.Text;
-        FieldByName('fk_contrato').value := pk_contrato;
-        //FieldByName('fk_propietario').value := pk_propietario;
-        FieldByName('fk_persona').value := pk_pagador;
-        FieldByName('disponible').value := CBDisponible.Text;
-
-        FieldByName('colorChurrasquera').value := EColor.Text;
-        FieldByName('checkChurrasquera').value := Obtener(CBChurrasquera.Checked) ;
-        FieldByName('checkSalon').value := Obtener(CBSalon.Checked);
-        FieldByName('MotivoEvento').value := EMotivoEvento.Text;
-        FieldByName('NumeroInvitados').value := ENumeroInvitados.Text;
-        FieldByName('CelularContacto').value := ECeulular.Text;
-        FieldByName('Amenizado').value := EAmenizado.Text;
-        FieldByName('PropietarioInquilino').value := CBPropietarioInquilino.Text;
+          FieldByName('colorChurrasquera').value := EColor.Text;
+          FieldByName('checkChurrasquera').value := Obtener(CBChurrasquera.Checked) ;
+          FieldByName('checkSalon').value := Obtener(CBSalon.Checked);
+          FieldByName('MotivoEvento').value := EMotivoEvento.Text;
+          FieldByName('NumeroInvitados').value := ENumeroInvitados.Text;
+          FieldByName('CelularContacto').value := ECeulular.Text;
+          FieldByName('Amenizado').value := EAmenizado.Text;
+          FieldByName('PropietarioInquilino').value := CBPropietarioInquilino.Text;
 
 
-        Post;
+          Post;
 
-        SQL.Text:='select max(pk_evento) as id from evento;';
-        Open;
-        Active:=True;
+          SQL.Text:='select max(pk_evento) as id from evento;';
+          Open;
+          Active:=True;
 
-        FSelectImprimirEvento.pk_evento:=FieldByName('id').AsString;
-        FSelectImprimirEvento.pk_condominio:='1';
-        FSelectImprimirEvento.ShowModal;
-        //ShowMessage('Registrado Correctamente!!!');
-        FAgregarEvento.Close;
-      end;
-    end
+          FSelectImprimirEvento.pk_evento:=FieldByName('id').AsString;
+          FSelectImprimirEvento.pk_condominio:='1';
+          FSelectImprimirEvento.ShowModal;
+          //ShowMessage('Registrado Correctamente!!!');
+          FAgregarEvento.Close;
+        end;      
+
+
+      
+    end // end.codigo=''
     else
     begin
-      with QSQL do
+      if CBDisponible.Text='Libre' then
       begin
-        SQL.Text:='select * from evento where pk_evento='+codigo+';';
-        Open;
-        Active:=True;
 
-        Edit;
-        FieldByName('fecha').value := DateTimePicker1.DateTime ;
-        FieldByName('numero').value :=  numero;
-        FieldByName('anio').value :=  ano;
-        FieldByName('mes').value := mes;
-        FieldByName('dia').value := dia;
-        FieldByName('horainicio').value := ehoraini.Text;
-        FieldByName('horafin').value := ehorafin.Text;
-        FieldByName('fk_contrato').value := pk_contrato;
-        //FieldByName('fk_propietario').value := pk_propietario;
-        FieldByName('fk_persona').value := pk_pagador;
-        FieldByName('disponible').value := CBDisponible.Text;
+        with QSQL do
+        begin
+          SQL.Text:='select * from evento where pk_evento='+codigo+';';
+          Open;
+          Active:=True;
 
-        FieldByName('colorChurrasquera').value := EColor.Text;
-        FieldByName('checkChurrasquera').value := Obtener(CBChurrasquera.Checked) ;
-        FieldByName('checkSalon').value := Obtener(CBSalon.Checked);
-        FieldByName('MotivoEvento').value := EMotivoEvento.Text;
-        FieldByName('NumeroInvitados').value := ENumeroInvitados.Text;
-        FieldByName('CelularContacto').value := ECeulular.Text;
-        FieldByName('Amenizado').value := EAmenizado.Text;
-        FieldByName('PropietarioInquilino').value := CBPropietarioInquilino.Text;
+          Edit;
+          //FieldByName('fecha').value := DateTimePicker1.DateTime ;
+          //FieldByName('numero').value :=  numero;
+          //FieldByName('anio').value :=  ano;
+          //FieldByName('mes').value := mes;
+          //FieldByName('dia').value := dia;
+          FieldByName('horainicio').value := '00:00';
+          FieldByName('horafin').value := '00:00';
+          FieldByName('fk_contrato').value := 0;
+          //FieldByName('fk_propietario').value := pk_propietario;
+          FieldByName('fk_persona').value := '0';
+          FieldByName('disponible').value := CBDisponible.Text;
 
-        Post;
+          FieldByName('colorChurrasquera').value := '';
+          FieldByName('checkChurrasquera').value := False;
+          FieldByName('checkSalon').value := False;
+          FieldByName('MotivoEvento').value := '';
+          FieldByName('NumeroInvitados').value := '';
+          FieldByName('CelularContacto').value := '';
+          FieldByName('Amenizado').value := '';
+          FieldByName('PropietarioInquilino').value := '';
 
-        FSelectImprimirEvento.pk_evento:=codigo;
-        FSelectImprimirEvento.pk_condominio:='1';
-        FSelectImprimirEvento.ShowModal;
+          Post;
 
-        //ShowMessage('Modificado Correctamente!!!');
-        FAgregarEvento.Close;
+
+          FAgregarEvento.Close;
+        end;
+
+
+      end
+      else
+      begin
+
+        with QSQL do
+        begin
+          SQL.Text:=''+
+          ' update propiedad '+
+          ' set nombre="'+Edireccion.Text+'" '+
+          ' where '+
+          ' pk_propiedad='+pk_propiedad+'; ';
+          ExecSQL;
+        end;
+
+        with QSQL do
+        begin
+          SQL.Text:='select * from evento where pk_evento='+codigo+';';
+          Open;
+          Active:=True;
+
+          Edit;
+          FieldByName('fecha').value := DateTimePicker1.DateTime ;
+          FieldByName('numero').value :=  numero;
+          FieldByName('anio').value :=  ano;
+          FieldByName('mes').value := mes;
+          FieldByName('dia').value := dia;
+          FieldByName('horainicio').value := ehoraini.Text;
+          FieldByName('horafin').value := ehorafin.Text;
+          FieldByName('fk_contrato').value := pk_contrato;
+          //FieldByName('fk_propietario').value := pk_propietario;
+          FieldByName('fk_persona').value := pk_pagador;
+          FieldByName('disponible').value := CBDisponible.Text;
+
+          FieldByName('colorChurrasquera').value := EColor.Text;
+          FieldByName('checkChurrasquera').value := Obtener(CBChurrasquera.Checked) ;
+          FieldByName('checkSalon').value := Obtener(CBSalon.Checked);
+          FieldByName('MotivoEvento').value := EMotivoEvento.Text;
+          FieldByName('NumeroInvitados').value := ENumeroInvitados.Text;
+          FieldByName('CelularContacto').value := ECeulular.Text;
+          FieldByName('Amenizado').value := EAmenizado.Text;
+          FieldByName('PropietarioInquilino').value := CBPropietarioInquilino.Text;
+
+          Post;
+
+          FSelectImprimirEvento.pk_evento:=codigo;
+          FSelectImprimirEvento.pk_condominio:='1';
+          FSelectImprimirEvento.ShowModal;
+
+          //ShowMessage('Modificado Correctamente!!!');
+          FAgregarEvento.Close;
+        end;
+
       end;
+
 
     end;
 
@@ -199,41 +270,47 @@ ClicAgregarPersonas;
 end;
 
 procedure TFAgregarEvento.Cargar;
+var fecha:string;
 begin
   with QBuscar do
   begin
     SQL.Text:=''+
-    ' SELECT '+
-    ' 	evento.pk_evento, '+
-    ' 	evento.fecha, '+
-    ' 	evento.anio, '+
-    ' 	evento.mes, '+
-    ' 	evento.dia, '+
-    ' 	evento.horainicio, '+
-    ' 	evento.horafin, '+
-    ' 	evento.fk_contrato, '+
-    ' 	evento.fk_propietario, '+
-    ' 	evento.fk_persona, '+
-    ' 	evento.disponible, '+
-    ' 	evento.colorChurrasquera, '+
-    ' 	evento.checkChurrasquera, '+
-    ' 	evento.checkSalon, '+
-    ' 	evento.MotivoEvento, '+
-    ' 	evento.NumeroInvitados, '+
-    ' 	evento.CelularContacto, '+
-    ' 	evento.Amenizado, '+
-    ' 	evento.PropietarioInquilino, '+
-    ' 	nombredueno(contrato.pk_contrato) as propietario, '+
-    ' 	propiedad.codigo, '+
-    ' 	(SELECT nombre from persona where pk_persona = evento.fk_persona) AS NombrePersona '+
-    ' FROM  '+
-    ' evento inner join contrato on evento.fk_contrato=contrato.pk_contrato '+
-    ' inner join propiedad on contrato.fk_propiedad=propiedad.pk_propiedad '+
-    ' WHERE '+
+    ' SELECT  '+
+    ' evento.pk_evento,  '+
+    ' evento.fecha,  '+
+    ' evento.anio,  '+
+    ' evento.mes,  '+
+    ' evento.dia,  '+
+    ' evento.horainicio,  '+
+    ' evento.horafin,  '+
+    ' evento.fk_contrato,  '+
+    ' evento.fk_propietario,  '+
+    ' evento.fk_persona,  '+
+    ' evento.disponible,  '+
+    ' evento.colorChurrasquera,  '+
+    ' evento.checkChurrasquera,  '+
+    ' evento.checkSalon,  '+
+    ' evento.MotivoEvento,  '+
+    ' evento.NumeroInvitados,  '+
+    ' evento.CelularContacto,  '+
+    ' evento.Amenizado,  '+
+    ' evento.PropietarioInquilino,  '+
+    ' nombredueno(contrato.pk_contrato) as propietario,  '+
+    ' propiedad.codigo,  '+
+    ' propiedad.pk_propiedad, '+
+    ' propiedad.nombre as direccion, '+
+    ' (SELECT nombre from persona where pk_persona = evento.fk_persona) AS NombrePersona  '+
+    ' FROM   '+
+    '  evento left join persona on evento.fk_persona=persona.pk_persona   '+
+    '  left join contrato on evento.fk_contrato=contrato.pk_contrato  '+
+    '  left join propiedad on contrato.fk_propiedad=propiedad.pk_propiedad  '+
+    
+    ' WHERE  '+
     ' evento.pk_evento='+codigo+' ';
     Open;
     Active:=true;
 
+    fecha := FieldByName('fecha').AsString;
     DateTimePicker1.DateTime:=FieldByName('fecha').AsDateTime;
     ehoraini.Text:=FieldByName('horainicio').AsString;
     ehorafin.Text:=FieldByName('horafin').AsString;
@@ -253,6 +330,8 @@ begin
     CBDisponible.Text:=FieldByName('disponible').AsString;
     CBPropietarioInquilino.Text := FieldByName('PropietarioInquilino').AsString;
 
+    Edireccion.Text:=FieldByName('direccion').AsString;
+    pk_propiedad:=FieldByName('pk_propiedad').AsString;
 
   end;
 
@@ -439,6 +518,8 @@ begin
     begin
       EPropietarioPropiedad.Text:=FBPropiedadPropietarioEvento.propiedad +' | '+FBPropiedadPropietarioEvento.propietario;
       pk_contrato := FBPropiedadPropietarioEvento.pk_contrato;
+      pk_propiedad:= FBPropiedadPropietarioEvento.pk_propiedad;
+      Edireccion.Text :=FBPropiedadPropietarioEvento.propiedad;
     end;
 
 end;
@@ -471,11 +552,31 @@ begin
     Result:=False;
   end;
 
+
+  if codigo='' then
+  begin
+    if ValidarColor()=False then
+    begin
+      MessageDlgPos('ERROR: Ese color o Numero ya esta en otra solicitud de reserva', mtWarning, [mbOK], 0, -1, -1);
+      Result:=False;
+    end;
+  end
+  else
+  begin
+    if ValidarColorEditar()=False then
+    begin
+      MessageDlgPos('ERROR: Ese color o Numero ya esta en otra solicitud de reserva', mtWarning, [mbOK], 0, -1, -1);
+      Result:=False;
+    end;  
+  end;
+  
+
   if pk_pagador='' then
   begin
     MessageDlgPos('ERROR: Seleccione persona solicitante de Reserva', mtWarning, [mbOK], 0, -1, -1);
     Result:=False;
   end;
+
 
 
   if codigo='' then
@@ -485,6 +586,53 @@ begin
       MessageDlgPos('ERROR: Seleccion una opcion diferente de Libre', mtWarning, [mbOK], 0, -1, -1);
       Result:=False;
     end;
+  end;
+
+end;
+
+function TFAgregarEvento.ValidarColor(): boolean;
+begin
+  with QSQL do
+  begin
+    SQL.Text:=''+
+    ' SELECT   '+
+    ' count(*) CANT '+
+    ' FROM   '+
+    ' evento  '+
+    ' where  '+
+    ' date(evento.fecha)=date(:fecha) and '+
+    ' colorChurrasquera="'+EColor.Text+'" ';
+    ParamByName('fecha').Value:=DateTimePicker1.DateTime;
+    Open;
+    Active:=True;
+    if FieldByName('CANT').AsInteger=0 then
+      Result:=True
+    else
+      result:=False;
+
+  end;
+end;
+
+function TFAgregarEvento.ValidarColorEditar: boolean;
+begin
+  with QSQL do
+  begin
+    SQL.Text:=''+
+    ' SELECT   '+
+    ' count(*) CANT '+
+    ' FROM   '+
+    ' evento  '+
+    ' where  '+
+    ' date(evento.fecha)=date(:fecha) and '+
+    ' colorChurrasquera="'+EColor.Text+'"  and pk_evento<>'+codigo;
+    ParamByName('fecha').Value:=DateTimePicker1.DateTime;
+    Open;
+    Active:=True;
+    if FieldByName('CANT').AsInteger=0 then
+      Result:=True
+    else
+      result:=False;
+
   end;
 
 end;

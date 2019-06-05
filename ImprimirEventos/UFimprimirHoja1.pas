@@ -41,27 +41,29 @@ begin
   with QSQLHoja1 do
   begin
     SQL.Text:=''+
-    ' SELECT  '+
-' evento.pk_evento,  '+
-' evento.fecha,  '+
-' persona.nombre,  '+
-' persona.ci,  '+
-' persona.direccion,  '+
-' evento.numero,  '+
-' evento.horainicio,  '+
-' evento.horafin,  '+
-' evento.PropietarioInquilino, '+
-' evento.colorChurrasquera,  '+
-' evento.checkChurrasquera,  '+
-' evento.checkSalon,  '+
-' evento.MotivoEvento,  '+
-' evento.NumeroInvitados,  '+
-' evento.CelularContacto,  '+
-' evento.Amenizado,  '+
-' (select nombre from condominio where pk_condominio=1) as Condominio  '+
-    ' FROM  '+
-    ' evento inner join persona on evento.fk_persona=persona.pk_persona '+
-    ' where '+
+ '  SELECT   '+
+'  evento.pk_evento,   '+
+'  evento.fecha,   '+
+'  persona.nombre,   '+
+'  persona.ci,   '+
+'  propiedad.nombre as direccion, '+
+'  evento.numero,   '+
+'  evento.horainicio,   '+
+'  evento.horafin,   '+
+'  evento.PropietarioInquilino,  '+
+'  evento.colorChurrasquera,   '+
+'  evento.checkChurrasquera,   '+
+'  evento.checkSalon,   '+
+'  evento.MotivoEvento,   '+
+'  evento.NumeroInvitados,   '+
+'  evento.CelularContacto,   '+
+'  evento.Amenizado,   '+
+'  (select nombre from condominio where pk_condominio=1) as Condominio   '+
+'  FROM   '+
+'  evento inner join persona on evento.fk_persona=persona.pk_persona  '+
+'  inner join contrato on evento.fk_contrato=contrato.pk_contrato '+
+'  inner join propiedad on contrato.fk_propiedad=propiedad.pk_propiedad '+
+'  where  '+
     ' evento.pk_evento='+pk_evento+'; ';
     Open;
     Active:=True;

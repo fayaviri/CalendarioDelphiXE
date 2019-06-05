@@ -38,7 +38,8 @@ begin
     ' select '+
     ' contrato.pk_contrato, '+
     ' nombredueno(contrato.pk_contrato) as propietario, '+
-    ' propiedad.codigo '+
+    ' propiedad.codigo, '+
+    ' propiedad.pk_propiedad '+
     ' from contrato inner join propiedad on contrato.fk_propiedad=propiedad.pk_propiedad '+
     ' where '+
     ' concat(nombredueno(contrato.pk_contrato)," ",propiedad.codigo) like "%'+dato+'%"  limit 50 ';
@@ -54,11 +55,12 @@ begin
   with QBuscarpersona do
   begin
     SQL.Text:=''+
-        ' select    '+
-        ' contrato.pk_contrato, '+
-        ' nombredueno(contrato.pk_contrato) as propietario, '+
-        ' propiedad.codigo                      '+
-        ' from contrato inner join propiedad on contrato.fk_propiedad=propiedad.pk_propiedad '+
+        '  select     '+
+        '  contrato.pk_contrato,  '+
+        '  nombredueno(contrato.pk_contrato) as propietario,  '+
+        '  propiedad.pk_propiedad, '+
+        '  propiedad.codigo  '+
+        '  from contrato inner join propiedad on contrato.fk_propiedad=propiedad.pk_propiedad  '+
         ' where '+
         ' contrato.fk_propiedad='+pk_propiedad;
     Open;

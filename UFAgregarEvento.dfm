@@ -2,7 +2,7 @@ object FAgregarEvento: TFAgregarEvento
   Left = 0
   Top = 0
   Caption = 'Evento'
-  ClientHeight = 552
+  ClientHeight = 592
   ClientWidth = 495
   Color = clWhite
   Font.Charset = ANSI_CHARSET
@@ -19,7 +19,7 @@ object FAgregarEvento: TFAgregarEvento
     Left = -2
     Top = -2
     Width = 498
-    Height = 573
+    Height = 596
     TabOrder = 0
     object Label1: TLabel
       Left = 40
@@ -175,7 +175,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object Label5: TLabel
       Left = 39
-      Top = 155
+      Top = 196
       Width = 129
       Height = 18
       Caption = 'Persona que Reserva'
@@ -188,7 +188,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object Label6: TLabel
       Left = 40
-      Top = 255
+      Top = 295
       Width = 120
       Height = 18
       Caption = 'Opcion de Solicitud'
@@ -201,7 +201,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object Label7: TLabel
       Left = 40
-      Top = 300
+      Top = 340
       Width = 90
       Height = 18
       Caption = 'Disponibilidad'
@@ -214,7 +214,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object Label8: TLabel
       Left = 40
-      Top = 352
+      Top = 392
       Width = 91
       Height = 18
       Caption = 'Motivo Evento'
@@ -249,7 +249,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object Label9: TLabel
       Left = 40
-      Top = 401
+      Top = 441
       Width = 86
       Height = 18
       Caption = 'Ameniza con :'
@@ -262,7 +262,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object Label10: TLabel
       Left = 40
-      Top = 452
+      Top = 492
       Width = 119
       Height = 18
       Caption = 'Celular de contacto'
@@ -275,7 +275,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object Label11: TLabel
       Left = 191
-      Top = 300
+      Top = 340
       Width = 96
       Height = 18
       Caption = 'N'#186' de Invitados'
@@ -288,7 +288,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object Label12: TLabel
       Left = 304
-      Top = 300
+      Top = 340
       Width = 119
       Height = 18
       Caption = 'Color Churrasquera'
@@ -301,7 +301,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object Label13: TLabel
       Left = 39
-      Top = 205
+      Top = 245
       Width = 129
       Height = 18
       Caption = 'Persona que Reserva'
@@ -314,7 +314,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object SpeedButton2: TSpeedButton
       Left = 432
-      Top = 168
+      Top = 209
       Width = 36
       Height = 38
       Glyph.Data = {
@@ -418,6 +418,19 @@ object FAgregarEvento: TFAgregarEvento
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
       OnClick = SpeedButton2Click
     end
+    object Label14: TLabel
+      Left = 39
+      Top = 149
+      Width = 89
+      Height = 18
+      Caption = 'Direccion Casa'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Calibri'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
     object DateTimePicker1: TDateTimePicker
       Left = 120
       Top = 37
@@ -459,7 +472,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object Epersonapaga: TEdit
       Left = 40
-      Top = 174
+      Top = 215
       Width = 296
       Height = 26
       ReadOnly = True
@@ -467,7 +480,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object btnnuevo: TBitBtn
       Left = 344
-      Top = 168
+      Top = 209
       Width = 38
       Height = 38
       DoubleBuffered = True
@@ -576,7 +589,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object btnbusarpersona: TBitBtn
       Left = 389
-      Top = 168
+      Top = 209
       Width = 38
       Height = 38
       DoubleBuffered = True
@@ -685,7 +698,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object CBDisponible: TComboBox
       Left = 40
-      Top = 319
+      Top = 359
       Width = 145
       Height = 26
       TabOrder = 7
@@ -697,7 +710,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object BitBtn1: TBitBtn
       Left = 104
-      Top = 509
+      Top = 549
       Width = 146
       Height = 37
       Caption = 'Guardar'
@@ -807,7 +820,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object BitBtn2: TBitBtn
       Left = 256
-      Top = 509
+      Top = 549
       Width = 146
       Height = 38
       Caption = 'Cancelar'
@@ -916,7 +929,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object CBChurrasquera: TCheckBox
       Left = 48
-      Top = 275
+      Top = 315
       Width = 97
       Height = 17
       Caption = 'Churrasuera'
@@ -924,7 +937,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object CBSalon: TCheckBox
       Left = 166
-      Top = 275
+      Top = 315
       Width = 120
       Height = 17
       Caption = 'Salon de evento'
@@ -932,7 +945,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object EMotivoEvento: TEdit
       Left = 40
-      Top = 372
+      Top = 412
       Width = 387
       Height = 26
       TabOrder = 12
@@ -940,7 +953,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object EAmenizado: TEdit
       Left = 40
-      Top = 422
+      Top = 462
       Width = 387
       Height = 26
       TabOrder = 13
@@ -948,7 +961,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object ECeulular: TEdit
       Left = 40
-      Top = 471
+      Top = 511
       Width = 388
       Height = 26
       TabOrder = 14
@@ -956,7 +969,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object ENumeroInvitados: TEdit
       Left = 191
-      Top = 319
+      Top = 359
       Width = 95
       Height = 26
       TabOrder = 15
@@ -964,7 +977,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object CBPropietarioInquilino: TComboBox
       Left = 40
-      Top = 224
+      Top = 264
       Width = 177
       Height = 26
       TabOrder = 16
@@ -975,7 +988,7 @@ object FAgregarEvento: TFAgregarEvento
     end
     object EColor: TComboBox
       Left = 304
-      Top = 319
+      Top = 359
       Width = 145
       Height = 26
       TabOrder = 17
@@ -987,6 +1000,14 @@ object FAgregarEvento: TFAgregarEvento
         'NARANJA'
         'NEGRO'
         'AZUL')
+    end
+    object Edireccion: TEdit
+      Left = 40
+      Top = 167
+      Width = 320
+      Height = 26
+      TabOrder = 18
+      Text = 'Edireccion'
     end
   end
   object QSQL: TZQuery
